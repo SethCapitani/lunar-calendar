@@ -4,7 +4,7 @@ Author: Seth Capitani
 Description: This program calculates and displays the moon phase for a user specified date(s).
 """
 
-from mc_functions import *
+from functions import *
 
 print("\n"
       "                 🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘 🌑\n"
