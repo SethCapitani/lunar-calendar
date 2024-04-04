@@ -132,19 +132,19 @@ def retrieve_eclipses(eclipseType, year):
     filePath = os.path.join(fileDirectory, 'data.csv')
 
     # Reads CSV file into DataFrame.
-    moonPhaseDataFrame = pd.read_csv(filePath)
+    moonPhaseData = pd.read_csv(filePath)
 
     year_str = str(year)
 
     if (eclipseType == "Lunar & Solar"):
-        eclipses = moonPhaseDataFrame[
-            ((moonPhaseDataFrame['Events'] == 'Lunar Eclipse') | (moonPhaseDataFrame['Events'] == 'Solar Eclipse')) &
-            (moonPhaseDataFrame['Date'].str.endswith(year_str))
+        eclipses = moonPhaseData[
+            ((moonPhaseData['Events'] == 'Lunar Eclipse') | (moonPhaseData['Events'] == 'Solar Eclipse')) &
+            (moonPhaseData['Date'].str.endswith(year_str))
         ]
     else:
-        eclipses = moonPhaseDataFrame[
-            (moonPhaseDataFrame['Events'] == eclipseType) &
-            (moonPhaseDataFrame['Date'].str.endswith(year_str))
+        eclipses = moonPhaseData[
+            (moonPhaseData['Events'] == eclipseType) &
+            (moonPhaseData['Date'].str.endswith(year_str))
         ]
         
     eclipseInfo = eclipses[['Date', 'Events']].values.tolist()
@@ -168,13 +168,13 @@ def retrieve_moons_type(moonType, year):
     filePath = os.path.join(fileDirectory, 'data.csv')
 
     # Reads CSV file into DataFrame.
-    moonPhaseDataFrame = pd.read_csv(filePath)
+    moonPhaseData = pd.read_csv(filePath)
 
     moonDates = []
 
     year_str = str(year)
 
-    moons = moonPhaseDataFrame[(moonPhaseDataFrame['Phase'] == moonType) & (moonPhaseDataFrame['Date'].str.endswith(year_str))]
+    moons = moonPhaseData[(moonPhaseData['Phase'] == moonType) & (moonPhaseData['Date'].str.endswith(year_str))]
 
     moonDates = moons['Date'].tolist()
 
