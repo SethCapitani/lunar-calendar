@@ -1,5 +1,3 @@
-from functions import *
-
 # Defines dictionary to map moon phases to emojis.
 phaseToEmoji = {
     'New Moon': '🌑',
