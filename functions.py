@@ -10,16 +10,18 @@ def get_year():
     Returns:
     int: The selected year.
     """
-    while True:
+    flag = True
+    while flag:
         try:
             print("Please enter the year you'd like. [2024-2050]")
             year = int(input("] "))
             if (2024 <= year <= 2050):
-                break
+                flag = False
             else:
                 print("That year is out of range!")
         except ValueError:
             print("Please input a valid integar!")
+
     return year
 
 def get_month():
@@ -28,16 +30,18 @@ def get_month():
     Returns:
     int: The selected month.
     """
-    while True:
+    flag = True
+    while flag:
         try:
             print("Please enter the month you'd like. [1-12]")
             month = int(input("] "))
             if 1 <= month <= 12:
-                break
+                flag = False
             else:
                 print("That month is out of range!")
         except ValueError:
             print("Please input a valid integar!")
+
     return month
 
 def days_in_month(year, month):
@@ -66,16 +70,18 @@ def get_day(year, month):
     Returns:
     int: The selected day.
     """
-    while True:
+    flag = True
+    while flag:
         try:
             print(f"Please enter the day you'd like. [1-{days_in_month(year, month)}]")
             day = int(input("] "))
             if (1 <= day <= days_in_month(year, month)):
-                break
+                flag = False
             else:
                 print("That day is out of range!")
         except ValueError:
             print("Please input a valid integar!")
+
     return day
 
 def get_date(year, month, day):
@@ -186,7 +192,8 @@ def get_mode():
     print("              Which mode would you like to use?              \n"
           "            Please choose from the options below.            \n"
           "")
-    while True:
+    flag = True
+    while flag:
         try:
             print("1 ] Search Moon Phase by Date.\n"
                   "2 ] Monthly Moon Overview.\n"
@@ -194,7 +201,7 @@ def get_mode():
                   "4 ] Annual Moon Overview.")
             mode = int(input("] "))
             if (1 <= mode <= 4):
-                break
+                flag = False
             else:
                 print("Choose between [1-4]!")
         except ValueError:
@@ -252,14 +259,15 @@ def annual_eclipses():
           "              Please choose from the options below.\n"
           "")
     
-    while True:
+    flag = True
+    while flag:
         try:
             print("1 ] Lunar Eclipses.\n"
                   "2 ] Solar Eclipses.\n"
                   "3 ] Lunar & Solar.")
             eclipseType = int(input("] "))
             if (1 <= eclipseType <= 3):
-                break
+                flag = False
             else:
                 print("Please choose between [1-3]!")
         except ValueError:
@@ -287,7 +295,8 @@ def annual_moons():
           "             Please choose from the options below.\n"
           "")
     
-    while True:
+    flag = True
+    while flag:
         try:
             print("1 ] Full Moons.\n"
                   "2 ] New Moons.\n"
@@ -295,7 +304,7 @@ def annual_moons():
                   "4 ] Third Quarter.")
             moonType = int(input("] "))
             if (1 <= moonType <= 4):
-                break
+                flag = False
             else:
                 print("Choose between [1-4]!")
         except ValueError:
@@ -321,7 +330,8 @@ def annual_moons():
 def main():
     """Calls chosen functions and handles multiple calls
     """
-    while True:
+    flag = True
+    while flag:
         mode = get_mode()
         if (mode == 1):
             phase_by_date()
@@ -338,4 +348,4 @@ def main():
         print()
 
         if (recall not in {"yes", "y", ""}):
-            break
+            flag = False
